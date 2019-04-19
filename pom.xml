@@ -29,7 +29,6 @@
     <dependency>
       <groupId>com.fred</groupId>
       <artifactId>ycwl-common</artifactId>
-      <version>${ycwl-common.version}</version>
     </dependency>
     <dependency>
       <groupId>com.qiniu</groupId>
