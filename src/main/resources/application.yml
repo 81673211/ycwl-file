@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: ycwl-file
+    name: ycwl-file-service
   profiles:
     active: dev
 
