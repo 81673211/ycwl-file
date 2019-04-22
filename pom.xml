@@ -13,10 +13,6 @@
     <version>1.0-SNAPSHOT</version>
   </parent>
 
-  <properties>
-    <ycwl-common.version>1.0-SNAPSHOT</ycwl-common.version>
-  </properties>
-
   <dependencies>
     <dependency>
       <groupId>org.springframework.cloud</groupId>
