@@ -10,5 +10,7 @@ public enum FileExtensionEnum {
 
     JPEG,
 
-    PNG
+    PNG,
+
+    MP4
 }

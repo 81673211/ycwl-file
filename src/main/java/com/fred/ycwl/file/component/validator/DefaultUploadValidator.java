@@ -5,10 +5,11 @@ import java.util.regex.Pattern;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.web.multipart.MultipartException;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.fred.ycwl.common.exception.BusinessException;
 import com.fred.ycwl.file.common.FileExtensionEnum;
+import com.fred.ycwl.file.common.FileResponseCode;
 import com.fred.ycwl.file.component.FileCommonUtil;
 
 /**
@@ -30,7 +31,7 @@ public class DefaultUploadValidator extends AbstractUploadValidator {
     @Override
     protected void checkNull(MultipartFile multipartFile) {
         if (multipartFile == null || multipartFile.isEmpty()) {
-            throw new MultipartException("multipartFile is null or empty.");
+            throw new BusinessException(FileResponseCode.MULTIPART_FILE_NULL);
         }
     }
 
@@ -38,11 +39,11 @@ public class DefaultUploadValidator extends AbstractUploadValidator {
     protected void checkFileName(MultipartFile multipartFile) {
         String originalFilename = multipartFile.getOriginalFilename();
         if (StringUtils.isBlank(originalFilename)) {
-            throw new MultipartException("文件名不能为空");
+            throw new BusinessException(FileResponseCode.MULTIPART_FILE_NAME_BLANK);
         }
         String filename = originalFilename.substring(0, originalFilename.lastIndexOf('.'));
         if (!PATTERN.matcher(filename).matches()) {
-            throw new MultipartException("文件名只能包含中文、字母和数字，请修改以下文件名：" + originalFilename);
+            throw new BusinessException(FileResponseCode.MULTIPART_FILE_NAME_ILLEGAL);
         }
     }
 
@@ -55,6 +56,6 @@ public class DefaultUploadValidator extends AbstractUploadValidator {
                 return;
             }
         }
-        throw new MultipartException("文件扩展名格式异常");
+        throw new BusinessException(FileResponseCode.MULTIPART_FILE_EXTENSION_ILLEGAL);
     }
 }
