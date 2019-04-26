@@ -1,5 +1,7 @@
 package com.fred.ycwl.file.component.uploader;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 /**
@@ -12,9 +14,11 @@ import org.springframework.stereotype.Component;
 @Component("fastDfsUploader")
 public class FastDfsUploader implements Uploader {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(FastDfsUploader.class);
+
     @Override
     public String upload(String fileName, byte[] content) {
-        System.out.println("i am FastDFS Uploader");
+        LOGGER.info("i am FastDFS Uploader");
         return null;
     }
 }

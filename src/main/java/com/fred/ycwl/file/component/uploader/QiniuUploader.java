@@ -1,7 +1,5 @@
 package com.fred.ycwl.file.component.uploader;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -23,7 +21,6 @@ import com.qiniu.util.Auth;
 @Component("qiniuUploader")
 public class QiniuUploader implements Uploader {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(QiniuUploader.class);
 
     @Value("${qiniu.accessKey}")
     private String accessKey;
@@ -45,7 +42,6 @@ public class QiniuUploader implements Uploader {
             //调用put方法上传
             uploadManager.put(content, fileName, getUpToken());
         } catch (QiniuException e) {
-            LOGGER.warn("调用七牛云API上传文件失败，原因：{}", e.getMessage());
             throw new BusinessException(FileResponseCode.UPLOAD_FILE_ERROR);
         }
         return fileName;

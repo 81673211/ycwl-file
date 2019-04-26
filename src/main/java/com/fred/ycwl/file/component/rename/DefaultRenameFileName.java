@@ -1,4 +1,4 @@
-package com.fred.ycwl.file.component;
+package com.fred.ycwl.file.component.rename;
 
 import java.util.UUID;
 

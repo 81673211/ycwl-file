@@ -56,6 +56,6 @@ public class DefaultUploadValidator extends AbstractUploadValidator {
                 return;
             }
         }
-        throw new BusinessException(FileResponseCode.MULTIPART_FILE_EXTENSION_ILLEGAL);
+        throw new BusinessException(FileResponseCode.FILE_EXTENSION_ILLEGAL);
     }
 }
