@@ -10,13 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.fred.ycwl.common.exception.BusinessException;
 import com.fred.ycwl.common.web.Response;
-import com.fred.ycwl.file.common.FileResponseCode;
 import com.fred.ycwl.file.component.rename.RenameFileName;
 import com.fred.ycwl.file.component.uploader.Uploader;
 import com.fred.ycwl.file.component.validator.UploadValidator;
@@ -50,13 +47,6 @@ public class FileController {
 
     @Autowired
     private RenameFileName renameFileName;
-
-    @RequestMapping(value = "/hi", method = RequestMethod.GET)
-    public String upload(String name) {
-        LOGGER.warn("bla bla bla");
-        throw new BusinessException(FileResponseCode.UPLOAD_FILE_ERROR);
-//        return name + "， " + fileStoreType;
-    }
 
     @PostMapping(value = "/upload")
     public Response<FileUploadDto> upload(FileUploadRequest request) throws IOException {
